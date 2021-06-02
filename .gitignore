@@ -1,103 +1,127 @@
-# Created by .ignore support plugin (hsz.mobi)
-### SublimeText template
-# Cache files for Sublime Text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
+#-------------------------
+# Operating Specific Junk Files
+#-------------------------
 
-# Workspace files are user-specific
-*.sublime-workspace
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using Sublime Text
-# *.sublime-project
+# OS X Thumbnails
+._*
 
-# SFTP configuration file
-sftp-config.json
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Package control specific files
-Package Control.last-run
-Package Control.ca-list
-Package Control.ca-bundle
-Package Control.system-ca-bundle
-Package Control.cache/
-Package Control.ca-certs/
-Package Control.merged-ca-bundle
-Package Control.user-ca-bundle
-oscrypto-ca-bundle.crt
-bh_unicode_properties.cache
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# Sublime-github package stores a github token in this file
-# https://packagecontrol.io/packages/sublime-github
-GitHub.sublime-settings
-### CodeIgniter template
-*/config/development
-*/logs/log-*.php
-!*/logs/index.html
-*/cache/*
-!*/cache/index.html
-!*/cache/.htaccess
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
 
+# Windows shortcuts
+*.lnk
+
+# Linux
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+#-------------------------
+# Environment Files
+#-------------------------
+# These should never be under version control,
+# as it poses a security risk.
+.env
+.vagrant
+Vagrantfile
+
+#-------------------------
+# Temporary Files
+#-------------------------
+writable/cache/*
+!writable/cache/index.html
+
+writable/logs/*
+!writable/logs/index.html
+
+writable/session/*
+!writable/session/index.html
+
+writable/uploads/*
+!writable/uploads/index.html
+
+writable/debugbar/*
+
+php_errors.log
+
+#-------------------------
+# User Guide Temp Files
+#-------------------------
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 
-#codeigniter 3
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
-/vendor/
-### JetBrains template
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+#-------------------------
+# Test Files
+#-------------------------
+tests/coverage*
 
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/dictionaries
-.idea/**/shelf
+# Don't save phpunit under version control.
+phpunit
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+#-------------------------
+# Composer
+#-------------------------
+vendor/
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+#-------------------------
+# IDE / Development Files
+#-------------------------
 
-# CMake
-cmake-build-debug/
-cmake-build-release/
+# Modules Testing
+_modules/*
 
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+# phpenv local config
+.php-version
 
-# File-based project format
-*.iws
+# Jetbrains editors (PHPStorm, etc)
+.idea/
+*.iml
 
-# IntelliJ
-out/
+# Netbeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+.phpintel
+/api/
 
-# JIRA plugin
-atlassian-ide-plugin.xml
+# Visual Studio Code
+.vscode/
 
-# Cursive Clojure plugin
-.idea/replstate.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-# Editor-based Rest Client
-.idea/httpRequests
+/results/
+/phpunit*.xml
+/.phpunit.*.cache
 

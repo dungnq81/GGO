@@ -21,8 +21,8 @@ class Filters extends BaseConfig
 		'honeypot' => Honeypot::class,
 
 		'auth' => \App\Filters\Auth::class,
-		'noauth' => \App\Filters\Noauth::class,
-		'userscheck' => \App\Filters\UsersCheck::class,
+		'authed' => \App\Filters\Authed::class,
+		'noauth' => \App\Filters\NoAuth::class,
 	];
 
 	/**
@@ -35,8 +35,6 @@ class Filters extends BaseConfig
 		'before' => [
 			// 'honeypot',
 			// 'csrf',
-
-			'userscheck'
 		],
 		'after'  => [
 			'toolbar',

@@ -3,16 +3,28 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use CodeIgniter\Model;
 
 class Users extends BaseController {
 
 	/**
-	 * @return \CodeIgniter\HTTP\RedirectResponse|void
+	 * @return string
 	 */
 	public function index() {
+
+		$model = new UserModel();
+		$data['user'] = $model->where( 'id', session()->get( 'id' ) )->first();
+		$data['title'] = "GGO | Danh sách tài khoản";
+		return view( 'users/table', $data );
+	}
+
+	/**
+	 * @return \CodeIgniter\HTTP\RedirectResponse|void
+	 */
+	public function login() {
+
 		$data = [];
 		helper( [ 'form' ] );
-
 		if ( $this->request->getMethod() == 'post' ) {
 
 			//let's do the validation here
@@ -31,18 +43,17 @@ class Users extends BaseController {
 				$data['validation'] = $this->validator;
 			} else {
 				$model = new UserModel();
-				$user = $model->where( 'email', $this->request->getVar( 'email' ) )
-				              ->first();
+				$user = $model->where( 'email', $this->request->getVar( 'email' ) )->first();
 
 				$this->setUserSession( $user );
-
-				//$session->setFlashdata('success', 'Successful Registration');
-				return redirect()->to( 'dashboard' );
+				return redirect()->to( '/' );
 			}
 		}
 
+		$data['title']  = "GGO | Đăng nhập";
+		$data['body_class'] = "login-page";
 		echo view( 'templates/header', $data );
-		echo view( 'login' );
+		echo view( 'users/login' );
 		echo view( 'templates/footer' );
 	}
 
@@ -54,9 +65,9 @@ class Users extends BaseController {
 	private function setUserSession( $user ) {
 		$data = [
 			'id'         => $user['id'],
-			'firstname'  => $user['firstname'],
-			'lastname'   => $user['lastname'],
+			'fullname'  => $user['fullname'],
 			'email'      => $user['email'],
+			'phone'      => $user['phone'],
 			'isLoggedIn' => true,
 		];
 
@@ -71,14 +82,13 @@ class Users extends BaseController {
 	public function register() {
 		$data = [];
 		helper( [ 'form' ] );
-
 		if ( $this->request->getMethod() == 'post' ) {
 
 			//let's do the validation here
 			$rules = [
-				'firstname'        => 'required|min_length[3]',
-				'lastname'         => 'required|min_length[3]',
-				'email'            => 'required|min_length[6]|valid_email|is_unique[users.email]',
+				'fullname'        => 'min_length[3]',
+				'email'            => 'required|min_length[6]|valid_email|is_unique[w_users.email]',
+				'phone'           => 'min_length[10]|max_length[10]|is_natural',
 				'password'         => 'required|min_length[3]',
 				'password_confirm' => 'matches[password]',
 			];
@@ -89,23 +99,24 @@ class Users extends BaseController {
 				$model = new UserModel();
 
 				$newData = [
-					'firstname' => $this->request->getVar( 'firstname' ),
-					'lastname'  => $this->request->getVar( 'lastname' ),
+					'fullname' => $this->request->getVar( 'fullname' ),
 					'email'     => $this->request->getVar( 'email' ),
+					'phone'     => $this->request->getVar( 'phone' ),
 					'password'  => $this->request->getVar( 'password' ),
 				];
 				$model->save( $newData );
 				$session = session();
-				$session->setFlashdata( 'success', 'Successful Registration' );
+				$session->setFlashdata( 'success', 'Đăng ký thành công' );
 
-				return redirect()->to( '/' );
+				return redirect()->to( '/users/login' );
 
 			}
 		}
 
-
+		$data['title']  = "GGO | Đăng ký thành viên";
+		$data['body_class'] = "register-page";
 		echo view( 'templates/header', $data );
-		echo view( 'register' );
+		echo view( 'users/register' );
 		echo view( 'templates/footer' );
 	}
 
@@ -122,8 +133,8 @@ class Users extends BaseController {
 		if ( $this->request->getMethod() == 'post' ) {
 			//let's do the validation here
 			$rules = [
-				'firstname' => 'required|min_length[3]',
-				'lastname'  => 'required|min_length[3]',
+				'fullname' => 'required|min_length[3]',
+				'phone'    => 'min_length[10]|max_length[10]|is_natural',
 			];
 
 			if ( $this->request->getPost( 'password' ) != '' ) {
@@ -131,16 +142,14 @@ class Users extends BaseController {
 				$rules['password_confirm'] = 'matches[password]';
 			}
 
-
 			if ( ! $this->validate( $rules ) ) {
 				$data['validation'] = $this->validator;
 			} else {
 
 				$newData = [
 					'id'        => session()->get( 'id' ),
-					'firstname' => $this->request->getPost( 'firstname' ),
-					'lastname'  => $this->request->getPost( 'lastname' ),
-					'updated_at'  => date( 'Y-m-d H:i:s' ),
+					'fullname' => $this->request->getPost( 'fullname' ),
+					'phone' => $this->request->getPost( 'phone' ),
 				];
 				if ( $this->request->getPost( 'password' ) != '' ) {
 					$newData['password'] = $this->request->getPost( 'password' );
@@ -148,13 +157,15 @@ class Users extends BaseController {
 				$model->save( $newData );
 
 				session()->setFlashdata( 'success', 'Successfuly Updated' );
-				return redirect()->to( '/profile' );
+				return redirect()->to( '/users/profile' );
 			}
 		}
 
 		$data['user'] = $model->where( 'id', session()->get( 'id' ) )->first();
+		$data['title']  = "GGO | Thông tin thành viên";
+		$data['body_class'] = "register-page";
 		echo view( 'templates/header', $data );
-		echo view( 'profile' );
+		echo view( 'users/profile' );
 		echo view( 'templates/footer' );
 	}
 

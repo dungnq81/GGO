@@ -8,7 +8,7 @@ class UserModel extends Model {
 
 	protected $table = 'w_users';
 
-	protected $allowedFields = [ 'firstname', 'lastname', 'email', 'phone', 'password', 'updated_at', 'data' ];
+	protected $allowedFields = [ 'fullname', 'email', 'phone', 'password', 'updated_at', 'data' ];
 	protected $beforeInsert = [ 'beforeInsert' ];
 	protected $beforeUpdate = [ 'beforeUpdate' ];
 

@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $title ?></title>
+    <title><?= @$title ?></title>
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" />
     <link rel="stylesheet" href="/assets/css/awe.css">
     <link rel="stylesheet" href="/assets/plugins/icheck-bootstrap/icheck-bootstrap.css">
     <link rel="stylesheet" href="/assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+
+    <script src="/assets/plugins/jquery/jquery.min.js"></script>
 </head>
-<body class="hold-transition <?= $body_class ?>">
+<body class="hold-transition <?= @$body_class ?>">

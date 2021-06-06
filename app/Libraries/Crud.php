@@ -38,7 +38,7 @@ class Crud extends Crud_core
     }
 
     public function callback_featured_image($item){
-        $src = $item->p_image ? '/uploads/images/'.$item->p_image : '/admin/assets/img/profile.png';
+        $src = $item->p_image ? '/uploads/images/'.$item->p_image : '/assets/img/profile.png';
 
         return '<img src="'.$src.'" style="width:54px;" class="img-circle">';
     }

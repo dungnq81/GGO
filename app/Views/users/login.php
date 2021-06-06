@@ -1,6 +1,6 @@
 <div class="login-box">
     <div class="login-logo">
-        <a href="/"><b>GGO</b></a>
+        <a href="/"><b>Sago Office</b></a>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-7">
                         <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
+                            <input disabled type="checkbox" id="remember">
                             <label for="remember">Ghi nhớ</label>
                         </div>
                     </div>

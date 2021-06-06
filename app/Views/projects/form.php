@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layouts/main') ?>
+<?= $this->extend('templates/main') ?>
 <?= $this->section('content') ?>
 <?= $form ?>
 <?= $this->endSection() ?>

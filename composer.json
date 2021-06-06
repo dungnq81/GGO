@@ -12,8 +12,8 @@
         "laminas/laminas-mail": "*",
         "laminas/laminas-json": "*",
         "laminas/laminas-xml2json": "*",
-        "almasaeed2010/adminlte": "~3.0"
-
+        "almasaeed2010/adminlte": "~3.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "mikey179/vfsstream": "*",

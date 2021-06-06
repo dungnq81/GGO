@@ -37,8 +37,8 @@ $routes->add( '/users', 'Users::index', [ 'filter' => 'auth' ] );
 $routes->add( '/users/login', 'Users::login', [ 'filter' => 'authed' ] );
 $routes->add( '/users/(:any)', 'Users::$1', [ 'filter' => 'auth' ] );
 
-$routes->add( '/projects', 'Projects::index', [ 'filter' => 'auth' ] );
-$routes->add( '/projects/(:any)', 'Projects::$1', [ 'filter' => 'auth' ] );
+$routes->add( '/offices', 'Offices::index', [ 'filter' => 'auth' ] );
+$routes->add( '/offices/(:any)', 'Offices::$1', [ 'filter' => 'auth' ] );
 
 /*
  * --------------------------------------------------------------------
